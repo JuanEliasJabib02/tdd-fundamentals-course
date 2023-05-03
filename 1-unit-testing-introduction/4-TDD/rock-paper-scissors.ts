@@ -14,49 +14,77 @@ interface RockPaperScissors {
 
 }
 
+interface Scenarios {
+  p1Move: Move,
+  p2Move: Move,
+  gameResult: GameResult,
+}
+
 
 
 export function createRockPaperScissors(): RockPaperScissors {
 
+  const scenarios: Scenarios[] = [
+    {
+      p1Move: Move.Scissors,
+      p2Move: Move.Scissors,
+      gameResult: GameResult.Tie
+    },
+    {
+      p1Move: Move.Scissors,
+      p2Move: Move.Rock,
+      gameResult: GameResult.PlayersLoses
+    },
+    {
+      p1Move: Move.Scissors,
+      p2Move: Move.Paper,
+      gameResult: GameResult.PlayerWins
+    },
+    {
+      p1Move: Move.Rock,
+      p2Move: Move.Rock,
+      gameResult: GameResult.Tie
+    },
+    {
+      p1Move: Move.Rock,
+      p2Move: Move.Paper,
+      gameResult: GameResult.PlayersLoses
+    },
+    {
+      p1Move: Move.Rock,
+      p2Move: Move.Scissors,
+      gameResult: GameResult.PlayerWins
+    },
+    {
+      p1Move: Move.Paper,
+      p2Move: Move.Rock,
+      gameResult: GameResult.PlayerWins
+    },
+    {
+      p1Move: Move.Paper,
+      p2Move: Move.Scissors,
+      gameResult: GameResult.PlayersLoses
+    },
+    {
+      p1Move: Move.Paper,
+      p2Move: Move.Paper,
+      gameResult: GameResult.Tie
+    },
+
+  ]
+
   return {
     play(p1Move: Move, p2Move: Move): GameResult {
 
-      if (p1Move === Move.Scissors && p2Move === Move.Scissors) {
+      const result = scenarios.find(scenario => scenario.p1Move === p1Move && scenario.p2Move === p2Move)
+
+      if (result) {
+        return result.gameResult
+      } else {
         return GameResult.Tie
       }
 
 
-      if (p1Move === Move.Scissors && p2Move === Move.Rock) {
-        return GameResult.PlayersLoses
-      }
-
-      if (p1Move === Move.Scissors && p2Move === Move.Paper) {
-        return GameResult.PlayerWins
-      }
-
-      if (p1Move === Move.Rock && p2Move === Move.Rock) {
-        return GameResult.Tie
-      }
-
-      if (p1Move === Move.Rock && p2Move === Move.Paper) {
-        return GameResult.PlayersLoses
-      }
-
-      if (p1Move === Move.Rock && p2Move === Move.Scissors) {
-        return GameResult.PlayerWins
-      }
-
-      if (p1Move === Move.Rock && p2Move === Move.Scissors) {
-        return GameResult.PlayerWins
-      }
-      if (p2Move === Move.Scissors) {
-        return GameResult.PlayersLoses;
-      }
-
-      if (p2Move == Move.Paper) {
-        return GameResult.Tie
-      }
-      return GameResult.PlayerWins
     }
 
   }
