@@ -43,4 +43,82 @@ describe("rock-paper-scissors", () => {
     expect(actual).toBe(GameResult.Tie)
   })
 
+
+  test("given player 1 move Rock and opponent move Scissors should return a tie", () => {
+    //Arrange
+    const sut = createRockPaperScissors();
+
+    //Act
+    const actual = sut.play(Move.Rock, Move.Scissors)
+
+    //Assert
+    expect(actual).toBe(GameResult.PlayerWins)
+  })
+
+  test("given player 1 move Rock and opponent move Scissors should return a tie", () => {
+    //Arrange
+    const sut = createRockPaperScissors();
+
+    //Act
+    const actual = sut.play(Move.Rock, Move.Scissors)
+
+    //Assert
+    expect(actual).toBe(GameResult.PlayerWins)
+  })
+
+  test("given player 1 move Rock and opponent move Paper should return a Player lose", () => {
+    //Arrange
+    const sut = createRockPaperScissors();
+
+    //Act
+    const actual = sut.play(Move.Rock, Move.Paper)
+
+    //Assert
+    expect(actual).toBe(GameResult.PlayersLoses)
+  })
+
+  test("given player 1 move Rock and opponent move Rock should return a tie", () => {
+    //Arrange
+    const sut = createRockPaperScissors();
+
+    //Act
+    const actual = sut.play(Move.Rock, Move.Rock)
+
+    //Assert
+    expect(actual).toBe(GameResult.Tie)
+  })
+
+  test("given player 1 move Scissors and opponent move Paper should return a player win", () => {
+    //Arrange
+    const sut = createRockPaperScissors();
+
+    //Act
+    const actual = sut.play(Move.Scissors, Move.Paper)
+
+    //Assert
+    expect(actual).toBe(GameResult.PlayerWins)
+  })
+
+  test("given player 1 move Scissors and opponent move Rock should return a player lose", () => {
+    //Arrange
+    const sut = createRockPaperScissors();
+
+    //Act
+    const actual = sut.play(Move.Scissors, Move.Rock)
+
+    //Assert
+    expect(actual).toBe(GameResult.PlayersLoses)
+  })
+
+  test("given player 1 move Scissors and opponent move Scissors should return a player a tie", () => {
+    //Arrange
+    const sut = createRockPaperScissors();
+
+    //Act
+    const actual = sut.play(Move.Scissors, Move.Scissors)
+
+    //Assert
+    expect(actual).toBe(GameResult.Tie)
+  })
+
 })
