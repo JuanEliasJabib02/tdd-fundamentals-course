@@ -2,34 +2,23 @@ import { createAgeCaclulator } from "./age-calculator";
 
 describe("agecalculator", () => {
 
-  test("given birthdate of 1979/02/15 and target date of 2000/03/21 should return 21", () => {
-    //Arrange
-    const birthDate = new Date("1979/02/15")
-    const targetDate = new Date("2000/03/21")
-    const expected = 21
-    const sut = createAgeCaclulator();
 
-    //act
-    const actual = sut(birthDate, targetDate)
+  test.each([
+    { birthDate: "1979/02/15", targetDate: "2000/03/21", expected: 21 },
+    { birthDate: "1950/01/31", targetDate: "2001/03/21", expected: 51 },
+  ])("given $birthDate and targetDate of $targetDate should be $expected",
+    ({ birthDate, targetDate, expected }) => {
 
-    //Assert
+      //Arrange
+      const sut = createAgeCaclulator();
 
-    expect(actual).toBe(expected)
-  })
+      //act
+      const actual = sut(new Date(birthDate), new Date(targetDate))
 
-  test("given birthdate of 1950/01/31 and target date of 2001/03/21 should return 51", () => {
-    //Arrange
-    const birthDate = new Date("1950/01/31")
-    const targetDate = new Date("2000/03/21")
-    const expected = 51
-    const sut = createAgeCaclulator();
+      //Assert
 
-    //act
-    const actual = sut(birthDate, targetDate)
+      expect(actual).toBe(expected)
 
-    //Assert
-
-    expect(actual).toBe(expected)
-  })
+    })
 
 })
